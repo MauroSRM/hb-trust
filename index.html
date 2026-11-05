@@ -35,23 +35,6 @@
     a { color: inherit; }
     svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
-    /* Barra de prévia (só para quem revisa, não faz parte do e-mail) */
-    .preview-bar {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 16px;
-      padding: 10px 16px;
-      background: #1f2937; color: #e5e7eb;
-      font-size: 13px; line-height: 1.4; text-align: center;
-    }
-    .preview-bar strong { color: #fff; font-weight: 600; }
-    .preview-bar nav { display: flex; gap: 6px; }
-    .preview-bar a {
-      display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
-      border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.24);
-      text-decoration: none; color: #fff; font-weight: 500;
-    }
-    .preview-bar a[aria-current="page"] { background: #fff; color: #111827; border-color: #fff; }
-    .preview-bar a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-
     .email { width: 600px; margin: 40px auto; }
     .blk { background: #fff; padding: 0 56px; }
     .t15 { font-size: 15px; line-height: 26px; }
@@ -139,6 +122,7 @@
       .app-row { display: flex; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; }
       .app-row .app-icon { width: 48px; height: 48px; border-radius: 11px; }
       .app-row .app-name { margin-top: 0; }
+      .apps-sep { margin: 8px 0 4px; }
       .badges { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
       .badges a { display: block; border-radius: 8px; }
       .badges a:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus); }
@@ -186,15 +170,6 @@
     <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/></symbol>
   </svg>
 
-  <div class="preview-bar" role="note">
-    <span><strong>Prévia</strong> · E-mail de primeiro acesso · copy genérica para a base massificada</span>
-    <nav aria-label="Versões">
-      <a href="https://maurosrm.github.io/hb-trust/" aria-current="page">Trust</a>
-      <a href="https://maurosrm.github.io/hb-srm/">SRM</a>
-      <a href="manual/">Manual</a>
-    </nav>
-  </div>
-
   <main class="email">
     <header class="hero">
       <svg class="mark" aria-hidden="true"><use href="#marca"/></svg>
@@ -236,6 +211,7 @@
           <a class="badge-gp" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=pt_BR" target="_blank" rel="noopener"><img src="assets/selo-google-play-pt-br.png" alt="Disponível no Google Play: Google Authenticator"></a>
           <a class="badge-as" href="https://apps.apple.com/br/app/google-authenticator/id388497605" target="_blank" rel="noopener"><img src="assets/selo-app-store-pt-br.svg" alt="Baixar na App Store: Google Authenticator"></a>
         </div>
+        <div class="rule apps-sep" role="separator"></div>
         <div class="app-row"><img class="app-icon" src="assets/icone-microsoft-authenticator.png" alt=""><div><p class="app-name">Microsoft Authenticator</p><p class="app-pub">Microsoft</p></div></div>
         <div class="badges">
           <a class="badge-gp" href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=pt_BR" target="_blank" rel="noopener"><img src="assets/selo-google-play-pt-br.png" alt="Disponível no Google Play: Microsoft Authenticator"></a>
