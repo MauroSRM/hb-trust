@@ -115,15 +115,14 @@
     .band .btn { margin-top: 20px; }
 
     /* Rodapé */
-    .space { height: 32px; }
     .foot { background: var(--hero-bg); padding: 0 56px; }
     .foot-brand { position: relative; height: 72px; }
     .foot-brand .logo { position: absolute; left: 0; bottom: 0; width: 93px; height: 38px; fill: #fff; }
     .foot-brand .tagline { position: absolute; right: 0; bottom: 5px; font-size: 10px; line-height: 14px; font-weight: 600; letter-spacing: 0.16em; color: #a4bcaa; }
     .foot-rule { margin-top: 32px; height: 1px; background: var(--foot-line); }
-    .foot-links { padding-top: 28px; font-size: 13px; line-height: 20px; color: var(--foot-muted); }
-    .foot-links span { color: #fff; font-weight: 600; }
-    .foot-links i { font-style: normal; margin: 0 10px; }
+    .foot-links { padding-top: 28px; font-size: 13px; line-height: 20px; color: var(--foot-text); }
+    .foot-links a { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+    .foot-links a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 2px; }
     .foot-legal { padding: 16px 0 56px; font-size: 12px; line-height: 19px; color: var(--foot-text); }
     .foot-legal .muted { color: var(--foot-muted); }
 
@@ -280,11 +279,10 @@
     <section class="blk" style="padding-top:24px;padding-bottom:40px">
       <p class="t13" style="line-height:21px"><b>Não reconhece este convite?</b> Não utilize o link e procure nossos canais oficiais de atendimento caso identifique alguma atividade suspeita.<br>A Trust nunca solicita senhas ou códigos de segurança por e-mail.</p>
     </section>
-    <div class="space"></div>
     <footer class="foot">
       <div class="foot-brand"><svg class="logo" role="img" aria-label="Trust, um bom negócio"><use href="#logo"/></svg></div>
       <div class="foot-rule"></div>
-      <p class="foot-links"><span>Central de ajuda</span><i>·</i><span>Privacidade</span><i>·</i><span>Segurança</span></p>
+      <p class="foot-links">Para dúvidas e atendimento: <a href="mailto:email@email.com.br">email@email.com.br</a></p>
       <p class="foot-legal">Você recebeu este e-mail porque foi adicionado como usuário à conta da sua empresa no Home Banking Trust. Este é um e-mail automático. Não é preciso responder.<br><span class="muted">[Razão social] · CNPJ [00.000.000/0000-00] · [Endereço]</span></p>
     </footer>
   </main>
