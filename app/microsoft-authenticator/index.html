@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baixar o Microsoft Authenticator</title>
+  <script>
+    /* Leva para a loja do sistema do celular. No computador, mostra as duas lojas. */
+    (function () {
+      var ua = navigator.userAgent || '';
+      var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (/android/i.test(ua)) location.replace('https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=pt_BR');
+      else if (ios) location.replace('https://apps.apple.com/br/app/microsoft-authenticator/id983156458');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f0f2f6; color: #374151; -webkit-font-smoothing: antialiased;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px;
+    }
+    .card {
+      width: 100%; max-width: 420px; background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 8, 30, 0.10); padding: 32px 24px; text-align: center;
+    }
+    .icon { width: 72px; height: 72px; border-radius: 16px; border: 1px solid #e5e7eb; display: block; margin: 0 auto 16px; }
+    h1 { font-size: 20px; line-height: 28px; font-weight: 700; color: #0c0c0c; }
+    .pub { font-size: 14px; color: #6b7280; margin-bottom: 20px; }
+    p.hint { font-size: 15px; line-height: 24px; margin-bottom: 20px; }
+    .badges { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .badges a { display: block; border-radius: 8px; }
+    .badges a:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.45); }
+    .gp { height: 48px; overflow: hidden; }
+    .gp img { height: 63px; margin-top: -7.3px; display: block; }
+    .as img { height: 48px; display: block; }
+    .note { margin-top: 20px; font-size: 13px; line-height: 20px; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="icon" src="../../assets/icone-microsoft-authenticator.png" alt="">
+    <h1>Microsoft Authenticator</h1>
+    <p class="pub">Microsoft</p>
+    <p class="hint">Escolha a loja do seu celular para baixar o aplicativo.</p>
+    <div class="badges">
+      <a class="gp" href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=pt_BR"><img src="../../assets/selo-google-play-pt-br.png" alt="Disponível no Google Play"></a>
+      <a class="as" href="https://apps.apple.com/br/app/microsoft-authenticator/id983156458"><img src="../../assets/selo-app-store-pt-br.svg" alt="Baixar na App Store"></a>
+    </div>
+    <p class="note">No computador? Aponte a câmera do celular para o QR Code do e-mail.</p>
+  </main>
+</body>
+</html>

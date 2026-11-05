@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primeiro acesso | Home Banking Trust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* E-mail de primeiro acesso, opção 2 com a copy genérica. Tokens do SRM Diamond DS. Marca Trust (data-brand="trust", branch brand-trust). */
+    :root {
+      --hero-bg: #104e20;
+      --btn: #1f8639;
+      --btn-hover: #176a2c;
+      --link: #1f8639;
+      --chip: #c9efd1;
+      --icon: #28a349;
+      --focus: rgba(40, 163, 73, 0.35);
+      --foot-line: #2d633b;
+      --foot-text: #b7cabc;
+      --foot-muted: #a4bcaa;
+      --text-strong: #0c0c0c;
+      --text-body: #374151;
+      --text-muted: #6b7280;
+      --line: #e5e7eb;
+      --page: #f0f2f6;
+      --band: #f8f9fb;
+      --link-dot: #d1d5db;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-sans); background: var(--page); color: var(--text-body); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    /* Barra de prévia (só para quem revisa, não faz parte do e-mail) */
+    .preview-bar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 16px;
+      padding: 10px 16px;
+      background: #1f2937; color: #e5e7eb;
+      font-size: 13px; line-height: 1.4; text-align: center;
+    }
+    .preview-bar strong { color: #fff; font-weight: 600; }
+    .preview-bar nav { display: flex; gap: 6px; }
+    .preview-bar a {
+      display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
+      border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.24);
+      text-decoration: none; color: #fff; font-weight: 500;
+    }
+    .preview-bar a[aria-current="page"] { background: #fff; color: #111827; border-color: #fff; }
+    .preview-bar a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+    .email { width: 600px; margin: 40px auto; }
+    .blk { background: #fff; padding: 0 56px; }
+    .t15 { font-size: 15px; line-height: 26px; }
+    .t13 { font-size: 13px; line-height: 20px; }
+    .t13 + .t13 { margin-top: 0; }
+    b, strong { color: var(--text-strong); font-weight: 700; }
+    .semi { color: var(--text-strong); font-weight: 600; }
+    .link { color: var(--link); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+    .link:hover { color: var(--btn-hover); }
+    .rule { height: 1px; background: var(--line); }
+
+    /* Topo */
+    .hero { position: relative; height: 264px; background: var(--hero-bg); overflow: hidden; }
+    .hero .mark { position: absolute; fill: rgba(255, 255, 255, 0.08); left: 400px; top: 67px; width: 164px; height: 181px; }
+    .hero .logo { position: absolute; left: 56px; top: 25px; width: 93px; height: 38px; fill: #fff; }
+    .hero .tagline { position: absolute; right: 56px; top: 37px; font-size: 10px; line-height: 14px; font-weight: 600; letter-spacing: 0.16em; color: #a4bcaa; }
+    .hero h1 { position: absolute; left: 56px; right: 56px; top: 104px; color: #fff; font-size: 40px; line-height: 46px; font-weight: 700; letter-spacing: -0.6px; }
+    .hero .sheet-start { position: absolute; left: 0; right: 0; bottom: 0; height: 24px; background: #fff; border-radius: 24px 24px 0 0; }
+
+    /* Apps */
+    .apps-desktop { display: flex; gap: 16px; padding-top: 16px; }
+    .app-card {
+      flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;
+      padding: 20px 16px; border: 1px solid var(--line); border-radius: 12px; text-decoration: none;
+    }
+    .app-card:hover { border-color: var(--icon); }
+    .app-card:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus); }
+    .app-icon { width: 56px; height: 56px; border-radius: 13px; border: 1px solid var(--line); display: block; }
+    .app-name { margin-top: 12px; font-size: 15px; line-height: 20px; font-weight: 600; color: var(--text-strong); }
+    .app-pub { font-size: 12px; line-height: 16px; color: var(--text-muted); }
+    .qr { width: 112px; height: 112px; margin-top: 16px; display: block; image-rendering: pixelated; }
+    .qr-cap { margin-top: 8px; font-size: 12px; line-height: 16px; color: var(--text-muted); }
+    .apps-mobile { display: none; }
+
+    /* Botões */
+    .btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      height: 48px; border-radius: 6px;
+      font-size: 15px; line-height: 20px; font-weight: 600; text-decoration: none;
+    }
+    .btn-primary { background: var(--btn); color: #fff; }
+    .btn-primary:hover { background: var(--btn-hover); }
+    .btn-secondary { background: #fff; color: var(--btn); border: 1px solid var(--btn); }
+    .btn-secondary:hover { background: var(--chip); }
+    .btn:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus); }
+
+    /* Etapas */
+    .band { background: var(--band); padding: 32px 56px 32px; }
+    .band h2 { font-size: 20px; line-height: 28px; font-weight: 700; color: var(--text-strong); }
+    .stepper { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); margin: 24px 0 8px; }
+    .stepper li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--text-strong); }
+    .stepper li:not(:last-child)::after { content: ''; position: absolute; top: 15px; left: calc(50% + 24px); right: calc(-50% + 24px); height: 2px; background: var(--link-dot); }
+    .dot { width: 32px; height: 32px; border-radius: 50%; background: var(--chip); display: flex; align-items: center; justify-content: center; }
+    .dot::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--icon); }
+    .steps { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; padding: 16px; border: 1px solid var(--line); border-radius: 12px; }
+    .chip { width: 40px; height: 40px; border-radius: 20px; background: var(--chip); color: var(--icon); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-n { font-size: 11px; line-height: 16px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+    .step-t { font-size: 15px; line-height: 22px; font-weight: 700; color: var(--text-strong); margin-top: 2px; }
+    .step-d { font-size: 14px; line-height: 22px; margin-top: 2px; }
+    .band .btn { margin-top: 20px; }
+
+    /* Rodapé */
+    .space { height: 32px; }
+    .foot { background: var(--hero-bg); padding: 0 56px; }
+    .foot-brand { position: relative; height: 72px; }
+    .foot-brand .logo { position: absolute; left: 0; bottom: 0; width: 93px; height: 38px; fill: #fff; }
+    .foot-brand .tagline { position: absolute; right: 0; bottom: 5px; font-size: 10px; line-height: 14px; font-weight: 600; letter-spacing: 0.16em; color: #a4bcaa; }
+    .foot-rule { margin-top: 32px; height: 1px; background: var(--foot-line); }
+    .foot-links { padding-top: 28px; font-size: 13px; line-height: 20px; color: var(--foot-muted); }
+    .foot-links span { color: #fff; font-weight: 600; }
+    .foot-links i { font-style: normal; margin: 0 10px; }
+    .foot-legal { padding: 16px 0 56px; font-size: 12px; line-height: 19px; color: var(--foot-text); }
+    .foot-legal .muted { color: var(--foot-muted); }
+
+    @media (max-width: 600px) {
+      .email { width: 100%; margin: 0; }
+      .blk { padding: 0 24px; }
+      .hero { height: 236px; }
+      .hero .mark { left: auto; right: -28px; top: 64px; width: 136px; height: 150px; }
+      .hero .logo { left: 24px; top: 25px; }
+      .hero .tagline { right: 24px; top: 29px; }
+      .hero h1 { left: 24px; right: 24px; top: 96px; font-size: 30px; line-height: 38px; letter-spacing: -0.45px; }
+      .apps-desktop { display: none; }
+      .apps-mobile { display: flex; flex-direction: column; gap: 12px; padding-top: 16px; }
+      .app-row { display: flex; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; }
+      .app-row .app-icon { width: 48px; height: 48px; border-radius: 11px; }
+      .app-row .app-name { margin-top: 0; }
+      .badges { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+      .badges a { display: block; border-radius: 8px; }
+      .badges a:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--focus); }
+      .badge-gp { height: 50px; overflow: hidden; }
+      .badge-gp img { height: 65px; margin-top: -7.5px; display: block; }
+      .badge-as img { height: 50px; display: block; }
+      .band { padding: 32px 24px; }
+      .stepper { display: none; }
+      .foot { padding: 0 24px; }
+    }
+    @media (max-width: 360px) {
+      .badge-gp img { height: 58px; margin-top: -6.7px; }
+      .badge-gp { height: 45px; }
+      .badge-as img { height: 45px; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="logo" viewBox="0 0 355 146"><path d="M103.88 21.48L102.35 21.0701C100.38 20.6401 98.33 20.4001 96.23 20.4001C86.6 20.4001 78.0902 25.18 72.9302 32.5C69.7702 36.98 67.8903 42.41 67.7603 48.27C67.7603 48.35 67.7402 48.43 67.7402 48.51V84.29C67.7402 87.8 70.6099 90.6799 74.1299 90.6799H80.0103C83.5203 90.6799 86.3999 87.8 86.3999 84.29V48.51C86.3999 48.51 86.3999 48.5 86.3999 48.49C86.6099 43.23 90.9302 39.03 96.2402 39.03C96.8002 39.03 97.2898 39.0802 97.8198 39.1702C97.8198 39.1702 98.7701 39.37 99.3501 39.54C102.65 40.26 106 38.27 106.88 34.97L108.4 29.29C109.31 25.9 107.28 22.37 103.88 21.46"/>
+<path d="M176.84 62.49V26.71C176.84 23.2 173.96 20.3201 170.45 20.3201H164.57C161.06 20.3201 158.18 23.2 158.18 26.71V62.49C158.18 62.56 158.2 62.63 158.2 62.71C158.08 67.73 153.72 72.1401 148.35 72.1401C142.98 72.1401 138.62 67.7401 138.5 62.3901V26.72C138.5 23.21 135.63 20.3301 132.11 20.3301H126.23C122.72 20.3301 119.84 23.21 119.84 26.72V62.5C119.84 62.6 119.87 62.69 119.87 62.79C120.26 78.2 132.85 90.78 148.35 90.78C163.85 90.78 176.85 77.83 176.85 62.5H176.84V62.49Z"/>
+<path d="M206.59 40.3601C206.59 37.9301 207.87 35.76 212.72 35.76C215.76 35.76 220.43 36.6101 223.27 37.1401C226.41 37.5901 228.99 34.3101 229.5 32.4001L230.16 29.8201C231 26.6801 229.32 23.45 226.39 22.24C225.57 21.86 218.64 20.3101 212.72 20.3101C197.66 20.3101 188.09 28.7401 188.09 40.3501C188.09 63.4501 215.28 60.0001 215.28 69.8301C215.28 72.7601 211.83 74.9299 207.24 74.9299C202.26 74.9299 195 73.24 194.9 73.22C191.57 72.5 188.2 74.5001 187.31 77.8201L186.65 80.4001C185.73 83.8201 187.78 87.37 191.2 88.28C191.2 88.28 200.08 90.73 207.23 90.73C224.97 90.73 233.65 80.1701 233.65 69.5701C233.65 45.9601 206.59 49.9101 206.59 40.3401"/>
+<path d="M61.3398 0.0100098H6.39014C2.88014 0.0100098 0 2.89015 0 6.40015V12.28C0 15.79 2.88014 18.6702 6.39014 18.6702H24.5303V84.3501C24.5303 87.8601 27.3999 90.74 30.9199 90.74H36.8003C40.3103 90.74 43.1899 87.8601 43.1899 84.3501V18.6702H61.3301C64.8401 18.6702 67.7202 15.79 67.7202 12.28V6.40015C67.7202 2.89015 64.8501 0.0100098 61.3301 0.0100098"/>
+<path d="M248.33 20.3201H255.55V6.40015C255.55 2.89015 258.43 0.0100098 261.94 0.0100098H267.82C271.33 0.0100098 274.21 2.89015 274.21 6.40015V20.3201H281.69C285.2 20.3201 288.08 23.2 288.08 26.71V32.5901C288.08 36.1001 285.2 38.98 281.69 38.98H274.21V84.3501C274.21 87.8601 271.34 90.74 267.82 90.74H261.94C258.43 90.74 255.55 87.8701 255.55 84.3501V38.98H249.75C249.56 38.98 249.38 38.9402 249.2 38.9202C246.54 38.7502 244.15 36.96 243.42 34.25L241.9 28.5701C241.9 28.5701 239.53 20.3201 248.34 20.3201"/>
+<path d="M350.21 23.23L326.23 9.36011C323.12 7.57011 319.22 8.59995 317.35 11.7C316.67 12.83 316.34 14.0901 316.4 15.3601C316.5 17.6101 317.73 19.63 319.69 20.75L336.06 30.24L312.44 43.79V6.57007C312.44 2.95007 309.49 0 305.87 0C305.58 0 305.3 0.0200586 305.02 0.0600586C301.76 0.480059 299.3 3.31015 299.3 6.65015V52.1401C299.3 55.3101 301.01 58.1701 303.77 59.5901C304.95 60.2001 306.21 60.5 307.53 60.5C309.02 60.5 310.48 60.0901 311.73 59.3401L350.18 37.27C351.71 36.35 352.91 34.9501 353.54 33.3401C355.03 29.5501 353.67 25.4 350.2 23.23H350.21Z"/>
+<path d="M37.6499 117.15H39.3301V136.35H38.04L37.8003 133.47C36.6503 135.66 34.57 136.76 31.54 136.78C26.9 136.78 24.5698 134 24.5698 128.43V117.15H26.25V128.2C26.25 130.6 26.6803 132.36 27.5503 133.48C28.4203 134.6 29.7899 135.16 31.6899 135.16C35.3099 135.16 37.2999 133.26 37.6499 129.45V117.14V117.15Z"/>
+<path d="M65.4399 116.72C69.7199 116.72 71.8699 119.5 71.8799 125.07V136.35H70.1802V125.26C70.1802 120.64 68.54 118.33 65.25 118.33C63.69 118.33 62.4402 118.81 61.4902 119.77C60.5402 120.73 59.9703 122.12 59.7803 123.95C59.8003 124.17 59.8198 124.52 59.8198 125V136.35H58.1401V125.26C58.1401 120.64 56.5 118.33 53.21 118.33C51.68 118.33 50.44 118.79 49.48 119.71C48.53 120.63 47.9302 121.96 47.7002 123.69V136.35H46.02V117.15H47.29L47.5503 119.97C48.6503 117.8 50.5799 116.72 53.3599 116.72C56.3999 116.72 58.3603 118.1 59.2603 120.87C59.7503 119.51 60.5201 118.48 61.5801 117.78C62.6401 117.08 63.9299 116.72 65.4399 116.72Z"/>
+<path d="M95.8701 116.72C98.3501 116.72 100.22 117.36 101.48 118.63C102.74 119.91 103.38 121.94 103.38 124.75V128.69C103.38 131.49 102.75 133.54 101.48 134.83C100.22 136.12 98.3501 136.77 95.8701 136.77C92.7801 136.77 90.6402 135.71 89.4502 133.6L89.1499 136.34H87.8398V106.89H89.52V119.78C90.74 117.74 92.8601 116.72 95.8701 116.72ZM101.67 128.47V125.03C101.67 122.66 101.2 120.96 100.26 119.9C99.3203 118.85 97.8 118.32 95.71 118.32C92.06 118.32 90.0003 120.12 89.5103 123.72V129.77C90.0003 133.37 92.06 135.17 95.71 135.17C97.8 135.17 99.3203 134.64 100.26 133.59C101.2 132.54 101.67 130.83 101.67 128.46V128.47Z"/>
+<path d="M122.23 134.77C120.92 136.11 118.96 136.78 116.36 136.78C113.76 136.78 111.8 136.11 110.49 134.76C109.18 133.42 108.52 131.52 108.52 129.08V124.41C108.52 121.93 109.18 120.03 110.49 118.71C111.8 117.38 113.76 116.72 116.36 116.72C118.96 116.72 120.92 117.38 122.23 118.71C123.54 120.04 124.2 121.94 124.2 124.41V129.08C124.2 131.53 123.54 133.43 122.23 134.77ZM111.67 133.62C112.65 134.65 114.22 135.17 116.36 135.17C118.5 135.17 120.06 134.65 121.05 133.62C122.03 132.59 122.53 131 122.53 128.86V124.6C122.53 122.48 122.04 120.91 121.05 119.88C120.07 118.85 118.5 118.33 116.36 118.33C114.22 118.33 112.66 118.85 111.67 119.88C110.69 120.91 110.19 122.49 110.19 124.6V128.86C110.19 131 110.68 132.59 111.67 133.62Z"/>
+<path d="M149.52 116.72C153.8 116.72 155.95 119.5 155.96 125.07V136.35H154.26V125.26C154.26 120.64 152.62 118.33 149.33 118.33C147.77 118.33 146.52 118.81 145.57 119.77C144.62 120.73 144.05 122.12 143.86 123.95C143.88 124.17 143.9 124.52 143.9 125V136.35H142.22V125.26C142.22 120.64 140.58 118.33 137.29 118.33C135.76 118.33 134.52 118.79 133.56 119.71C132.61 120.63 132.01 121.96 131.78 123.69V136.35H130.1V117.15H131.37L131.63 119.97C132.73 117.8 134.66 116.72 137.44 116.72C140.48 116.72 142.44 118.1 143.34 120.87C143.83 119.51 144.6 118.48 145.67 117.78C146.73 117.08 148.02 116.72 149.53 116.72H149.52Z"/>
+<path d="M180.03 116.72C184.95 116.72 187.41 119.5 187.42 125.07V136.35H185.72V125.3C185.72 122.9 185.24 121.14 184.29 120.02C183.34 118.9 181.87 118.34 179.87 118.34C176.2 118.34 174.11 120.14 173.6 123.74V136.36H171.92V117.16H173.19L173.45 120.11C174.62 117.86 176.81 116.73 180.02 116.73L180.03 116.72Z"/>
+<path d="M200.91 116.72C203.36 116.72 205.25 117.34 206.59 118.58C207.92 119.82 208.59 121.55 208.59 123.76V127.25H194.86V128.46C194.86 133 196.89 135.28 200.95 135.28C205.01 135.28 206.83 133.56 206.83 130.11V129.89H208.51C208.51 132.16 207.87 133.87 206.59 135.03C205.31 136.19 203.43 136.78 200.95 136.78C198.47 136.78 196.5 136.05 195.17 134.58C193.84 133.11 193.18 131.13 193.18 128.62V124.81C193.18 122.33 193.84 120.37 195.15 118.91C196.46 117.45 198.38 116.72 200.91 116.72ZM194.86 125.76H206.87V123.84C206.87 120.09 204.9 118.22 200.95 118.22C197 118.22 194.86 120.48 194.86 125V125.77V125.76Z"/>
+<path d="M227.97 117.15H229.28V138.18C229.28 140.42 228.6 142.21 227.23 143.56C225.86 144.9 223.96 145.58 221.52 145.58C217.21 145.58 214.73 143.88 214.07 140.48H215.79C216.1 141.68 216.7 142.56 217.59 143.12C218.48 143.69 219.79 143.97 221.52 143.97C223.49 143.97 224.99 143.44 226.03 142.38C227.07 141.32 227.59 139.81 227.59 137.84V133.68C226.37 135.75 224.24 136.78 221.2 136.78C216.23 136.78 213.75 134.08 213.75 128.69V124.75C213.75 121.97 214.38 119.94 215.65 118.65C216.91 117.36 218.77 116.72 221.21 116.72C224.32 116.72 226.48 117.79 227.69 119.93L227.99 117.15H227.97ZM221.4 135.17C225.17 135.17 227.23 133.27 227.58 129.46V124.04C227.22 120.24 225.16 118.34 221.4 118.33C219.31 118.33 217.79 118.85 216.84 119.9C215.89 120.95 215.42 122.66 215.42 125.04V128.48C215.42 130.85 215.89 132.55 216.84 133.61C217.79 134.67 219.31 135.19 221.4 135.19V135.17Z"/>
+<path d="M248.9 134.77C247.59 136.11 245.63 136.78 243.03 136.78C240.43 136.78 238.47 136.11 237.16 134.76C235.85 133.42 235.19 131.52 235.19 129.08V124.41C235.19 121.93 235.85 120.03 237.16 118.71C238.47 117.38 240.43 116.72 243.03 116.72C245.63 116.72 247.59 117.38 248.9 118.71C250.21 120.04 250.87 121.94 250.87 124.41V129.08C250.87 131.53 250.21 133.43 248.9 134.77ZM238.34 133.62C239.32 134.65 240.89 135.17 243.03 135.17C245.17 135.17 246.73 134.65 247.72 133.62C248.7 132.59 249.2 131 249.2 128.86V124.6C249.2 122.48 248.71 120.91 247.72 119.88C246.74 118.85 245.17 118.33 243.03 118.33C240.89 118.33 239.33 118.85 238.34 119.88C237.36 120.91 236.86 122.49 236.86 124.6V128.86C236.86 131 237.35 132.59 238.34 133.62ZM247.92 108.77L243.91 114.67H242.23L246.02 108.77H247.92Z"/>
+<path d="M263.74 136.69C261.21 136.69 259.29 136.03 257.98 134.72C256.67 133.41 256.01 131.53 256.01 129.09V124.42C256.01 121.94 256.66 120.05 257.96 118.73C259.26 117.42 261.19 116.76 263.74 116.76C266.29 116.76 268.08 117.38 269.4 118.62C270.72 119.86 271.38 121.61 271.38 123.88V124.2H269.7V123.85C269.7 120.2 267.71 118.38 263.74 118.38C261.65 118.38 260.12 118.89 259.15 119.91C258.18 120.93 257.69 122.5 257.69 124.62V128.88C257.69 131 258.18 132.56 259.15 133.58C260.12 134.59 261.65 135.1 263.74 135.1C267.71 135.1 269.7 133.28 269.7 129.65V129.3H271.38V129.62C271.38 131.89 270.72 133.63 269.4 134.87C268.08 136.1 266.19 136.72 263.74 136.72V136.69Z"/>
+<path d="M277.3 113.48V110.62H279.34V113.48H277.3ZM277.42 136.35V117.15H279.1V136.35H277.42Z"/>
+<path d="M298.92 134.77C297.61 136.11 295.65 136.78 293.05 136.78C290.45 136.78 288.49 136.11 287.18 134.76C285.87 133.42 285.21 131.52 285.21 129.08V124.41C285.21 121.93 285.87 120.03 287.18 118.71C288.49 117.38 290.45 116.72 293.05 116.72C295.65 116.72 297.61 117.38 298.92 118.71C300.23 120.04 300.89 121.94 300.89 124.41V129.08C300.89 131.53 300.23 133.43 298.92 134.77ZM288.36 133.62C289.34 134.65 290.91 135.17 293.05 135.17C295.19 135.17 296.75 134.65 297.74 133.62C298.72 132.59 299.22 131 299.22 128.86V124.6C299.22 122.48 298.73 120.91 297.74 119.88C296.76 118.85 295.19 118.33 293.05 118.33C290.91 118.33 289.35 118.85 288.36 119.88C287.38 120.91 286.88 122.49 286.88 124.6V128.86C286.88 131 287.37 132.59 288.36 133.62Z"/>
+<path d="M306.05 136.35V133.32H308.07V136.35H306.05Z"/></symbol>
+    <symbol id="marca" viewBox="299 0 56 61"><path d="M350.21 23.23L326.23 9.36011C323.12 7.57011 319.22 8.59995 317.35 11.7C316.67 12.83 316.34 14.0901 316.4 15.3601C316.5 17.6101 317.73 19.63 319.69 20.75L336.06 30.24L312.44 43.79V6.57007C312.44 2.95007 309.49 0 305.87 0C305.58 0 305.3 0.0200586 305.02 0.0600586C301.76 0.480059 299.3 3.31015 299.3 6.65015V52.1401C299.3 55.3101 301.01 58.1701 303.77 59.5901C304.95 60.2001 306.21 60.5 307.53 60.5C309.02 60.5 310.48 60.0901 311.73 59.3401L350.18 37.27C351.71 36.35 352.91 34.9501 353.54 33.3401C355.03 29.5501 353.67 25.4 350.2 23.23H350.21Z"/></symbol>
+    <symbol id="i-click" viewBox="0 0 24 24"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-mail-check" viewBox="0 0 24 24"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m16 19 2 2 4-4"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></symbol>
+    <symbol id="i-file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5v16"/><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"/></symbol>
+  </svg>
+
+  <div class="preview-bar" role="note">
+    <span><strong>Prévia</strong> · E-mail de primeiro acesso · copy genérica para a base massificada</span>
+    <nav aria-label="Versões">
+      <a href="https://maurosrm.github.io/hb-trust/" aria-current="page">Trust</a>
+      <a href="https://maurosrm.github.io/hb-srm/">SRM</a>
+      <a href="manual/">Manual</a>
+    </nav>
+  </div>
+
+  <main class="email">
+    <header class="hero">
+      <svg class="mark" aria-hidden="true"><use href="#marca"/></svg>
+      <svg class="logo" role="img" aria-label="Trust, um bom negócio"><use href="#logo"/></svg>
+      
+      <h1>Boas-vindas ao Home Banking Trust</h1>
+      <div class="sheet-start"></div>
+    </header>
+
+    <section class="blk" style="padding-top:16px">
+      <p class="t15">Olá,<br>Você foi adicionado como usuário à conta da sua empresa para acessar o Home Banking Trust.<br>Para concluir seu primeiro acesso, será necessário configurar uma etapa adicional de segurança.</p>
+    </section>
+    <div class="blk" style="padding-top:32px"><div class="rule"></div></div>
+
+    <section class="blk" style="padding-top:24px">
+      <p class="t15"><b>Antes de começar:</b><br>Instale o Google Authenticator ou Microsoft Authenticator no seu celular, disponíveis na Google Play (Android) ou App Store (iPhone).</p>
+    </section>
+    <section class="blk" style="padding-top:20px">
+      <p class="semi" style="font-size:15px;line-height:24px">Baixe um dos aplicativos abaixo para autenticar.</p>
+      <div class="apps-desktop">
+        <a class="app-card" href="https://maurosrm.github.io/hb-trust/app/google-authenticator/" target="_blank" rel="noopener">
+          <img class="app-icon" src="assets/icone-google-authenticator.png" alt="">
+          <span class="app-name">Google Authenticator</span>
+          <span class="app-pub">Google</span>
+          <img class="qr" src="qr/qr-google-authenticator.svg" alt="QR Code para baixar o Google Authenticator">
+          <span class="qr-cap">Aponte a câmera do celular</span>
+        </a>
+        <a class="app-card" href="https://maurosrm.github.io/hb-trust/app/microsoft-authenticator/" target="_blank" rel="noopener">
+          <img class="app-icon" src="assets/icone-microsoft-authenticator.png" alt="">
+          <span class="app-name">Microsoft Authenticator</span>
+          <span class="app-pub">Microsoft</span>
+          <img class="qr" src="qr/qr-microsoft-authenticator.svg" alt="QR Code para baixar o Microsoft Authenticator">
+          <span class="qr-cap">Aponte a câmera do celular</span>
+        </a>
+      </div>
+      <div class="apps-mobile">
+        <div class="app-row"><img class="app-icon" src="assets/icone-google-authenticator.png" alt=""><div><p class="app-name">Google Authenticator</p><p class="app-pub">Google</p></div></div>
+        <div class="badges">
+          <a class="badge-gp" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=pt_BR" target="_blank" rel="noopener"><img src="assets/selo-google-play-pt-br.png" alt="Disponível no Google Play: Google Authenticator"></a>
+          <a class="badge-as" href="https://apps.apple.com/br/app/google-authenticator/id388497605" target="_blank" rel="noopener"><img src="assets/selo-app-store-pt-br.svg" alt="Baixar na App Store: Google Authenticator"></a>
+        </div>
+        <div class="app-row"><img class="app-icon" src="assets/icone-microsoft-authenticator.png" alt=""><div><p class="app-name">Microsoft Authenticator</p><p class="app-pub">Microsoft</p></div></div>
+        <div class="badges">
+          <a class="badge-gp" href="https://play.google.com/store/apps/details?id=com.azure.authenticator&hl=pt_BR" target="_blank" rel="noopener"><img src="assets/selo-google-play-pt-br.png" alt="Disponível no Google Play: Microsoft Authenticator"></a>
+          <a class="badge-as" href="https://apps.apple.com/br/app/microsoft-authenticator/id983156458" target="_blank" rel="noopener"><img src="assets/selo-app-store-pt-br.svg" alt="Baixar na App Store: Microsoft Authenticator"></a>
+        </div>
+      </div>
+    </section>
+    <section class="blk" style="padding-top:24px">
+      <p class="t15" style="line-height:24px">Após a instalação, clique no botão abaixo e siga as orientações da plataforma para ativar seu acesso.</p>
+    </section>
+    <div class="blk" style="padding-top:16px;padding-bottom:32px">
+      <a class="btn btn-primary" href="https://portalclientes.trusthub.com.br" target="_blank" rel="noopener">Iniciar primeiro acesso</a>
+    </div>
+
+    <section class="band" aria-labelledby="etapas">
+      <h2 id="etapas">Seu primeiro acesso em 5 etapas</h2>
+      <ol class="stepper" aria-hidden="true">
+        <li><span class="dot"></span>Acesso</li>
+        <li><span class="dot"></span>Senha</li>
+        <li><span class="dot"></span>E-mail</li>
+        <li><span class="dot"></span>Autenticador</li>
+        <li><span class="dot"></span>Termos</li>
+      </ol>
+      <ol class="steps">
+        <li class="step"><span class="chip"><svg class="i" aria-hidden="true"><use href="#i-click"/></svg></span><div><p class="step-n">Etapa 1</p><p class="step-t">Acesse a plataforma</p><p class="step-d">Pelo botão “Iniciar primeiro acesso”, acima.</p></div></li>
+        <li class="step"><span class="chip"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></span><div><p class="step-n">Etapa 2</p><p class="step-t">Crie sua senha</p><p class="step-d">Siga as instruções da plataforma.</p></div></li>
+        <li class="step"><span class="chip"><svg class="i" aria-hidden="true"><use href="#i-mail-check"/></svg></span><div><p class="step-n">Etapa 3</p><p class="step-t">Confirme seu e-mail</p><p class="step-d">Enviaremos um código para o e-mail cadastrado. Informe esse código na plataforma.</p></div></li>
+        <li class="step"><span class="chip"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><div><p class="step-n">Etapa 4</p><p class="step-t">Cadastre o autenticador</p><p class="step-d">Use um dos dois aplicativos acima, o que for mais adequado para você.</p></div></li>
+        <li class="step"><span class="chip"><svg class="i" aria-hidden="true"><use href="#i-file-text"/></svg></span><div><p class="step-n">Etapa 5</p><p class="step-t">Aceite os termos</p><p class="step-d">Siga as instruções da plataforma.</p></div></li>
+      </ol>
+      <a class="btn btn-secondary" href="manual/" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-book"/></svg>Acesse o manual completo</a>
+    </section>
+
+    <section class="blk" style="padding-top:32px">
+      <p class="t13">Está com dificuldades em acessar pelo botão acima?<br><a class="link" href="./">[Clique aqui para visualizar no navegador]</a><br><span class="semi">Convite válido até DD/MM/AAAA.</span></p>
+    </section>
+    <section class="blk" style="padding-top:12px">
+      <p class="t13">Depois do primeiro acesso, entre pelo portal <a class="link" href="https://portalclientes.trusthub.com.br" target="_blank" rel="noopener">portalclientes.trusthub.com.br</a>.<br>Dúvidas? Fale com o suporte pelo WhatsApp <a class="link" href="https://wa.me/551141308280" target="_blank" rel="noopener">(11) 4130-8280</a>.</p>
+    </section>
+    <div class="blk" style="padding-top:32px"><div class="rule"></div></div>
+    <section class="blk" style="padding-top:24px;padding-bottom:40px">
+      <p class="t13" style="line-height:21px"><b>Não reconhece este convite?</b> Não utilize o link e procure nossos canais oficiais de atendimento caso identifique alguma atividade suspeita.<br>A Trust nunca solicita senhas ou códigos de segurança por e-mail.</p>
+    </section>
+    <div class="space"></div>
+    <footer class="foot">
+      <div class="foot-brand"><svg class="logo" role="img" aria-label="Trust, um bom negócio"><use href="#logo"/></svg></div>
+      <div class="foot-rule"></div>
+      <p class="foot-links"><span>Central de ajuda</span><i>·</i><span>Privacidade</span><i>·</i><span>Segurança</span></p>
+      <p class="foot-legal">Você recebeu este e-mail porque foi adicionado como usuário à conta da sua empresa no Home Banking Trust. Este é um e-mail automático. Não é preciso responder.<br><span class="muted">[Razão social] · CNPJ [00.000.000/0000-00] · [Endereço]</span></p>
+    </footer>
+  </main>
+</body>
+</html>
